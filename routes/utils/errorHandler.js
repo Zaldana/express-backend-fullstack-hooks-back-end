@@ -23,6 +23,7 @@ function errorHandler(err) {
 
     if (err.code) {
 
+            //switch case error from mongo db
         switch (err.code) {
             case 11000:
             case 11001:

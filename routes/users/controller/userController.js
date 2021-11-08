@@ -48,25 +48,31 @@ async function login(req, res) {
 
         } else {
 
-            let jwtToken = jwt.sign(
-
-                {
-                    email: foundUser.email,
-                    username: foundUser.username,
-                },
-
-                process.env.JWT_SECRET,
-                { expiresIn: "48h" }
-
-            );
-
-            res.json({ message: "success", payload: jwtToken })
+        
+                //check if password match first
+  
 
             let matchedPassword = await bcrypt.compare(password, foundUser.password);
 
             if (!matchedPassword) {
 
                 res.send("Please check email and password is correct")
+
+            } else {
+                
+                let jwtToken = jwt.sign(
+
+                    {
+                        email: foundUser.email,
+                        username: foundUser.username,
+                    },
+
+                    process.env.JWT_SECRET,
+                    { expiresIn: "48h" }
+
+                );
+
+                res.json({ message: "success", payload: jwtToken })
 
             }
         }
