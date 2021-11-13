@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema(
             type: String,
         },
 
-        // favorite: [{ type: mongoose.Schema.ObjectId, ref: "order" }]
+        favoriteMovies: [{ type: mongoose.Schema.ObjectId, ref: "movie" }]
 
     },
 

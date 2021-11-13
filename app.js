@@ -10,7 +10,7 @@ var cors = require("cors")
 
 var indexRouter = require("./routes/index");
 var usersRouter = require('./routes/users/usersRouter');
-
+var movieRouter = require('./routes/movie/movieRouter')
 
 mongoose.connect(process.env.MONGO_DB)
   .then(() => {
@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/movie', movieRouter)
 
 
 // catch 404 and forward to error handler

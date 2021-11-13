@@ -13,7 +13,7 @@ const {
     validateCreateData,
     validateLoginData,
     jwtMiddleware
-} = require("./lib/authMiddleware");
+} = require("../lib/authMiddleware");
 
 router.get('/',
     jwtMiddleware,
